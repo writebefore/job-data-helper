@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-04 23:22:30
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-04 23:35:57
+ * @LastEditTime: 2020-10-06 11:06:24
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\utils\jwtTool.js
  */
@@ -16,9 +16,16 @@ const createToken = async function(info) {
     return token;
 }
 
-const verifyToken = async function(token){
-    return await jwt.verify(token, secret, function(err, decoded) {
-        return err || decoded;
+const verifyToken = function(token){
+    return new Promise((resolve, reject) => {
+		jwt.verify(token, secret, (error, result) => {
+            if(error){
+                console.log(err);
+                reject(error)
+            } else {
+                resolve(result)
+            }
+		})
     })
 }
 

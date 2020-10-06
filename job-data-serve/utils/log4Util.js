@@ -2,21 +2,21 @@
  * @Author: LHN
  * @Date: 2020-10-05 18:52:22
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-05 19:49:33
+ * @LastEditTime: 2020-10-06 11:05:43
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\utils\log4Util.js
  */
-const log4js = require('log4js');
+const log4js = require("log4js");
 
-const logConfig = require('../log4jsConfig');
+const logConfig = require("../log4jsConfig");
 
 log4js.configure(logConfig);
 
 const logUtil = {};
 // 调用预先定义的日志名称
-var resLogger = log4js.getLogger('resLogger');
-var reqLogger = log4js.getLogger('http');
-var errorLogger = log4js.getLogger('errorLogger');
+var resLogger = log4js.getLogger("resLogger");
+var reqLogger = log4js.getLogger("http");
+var errorLogger = log4js.getLogger("errorLogger");
 var consoleLogger = log4js.getLogger();
 
 // 封装错误日志
@@ -46,88 +46,88 @@ logUtil.logInfo = function (info) {
 };
 
 var formatInfo = function (info) {
-  var logText = '';
+  var logText = "";
   // 响应日志开始
-  logText += '\n' + '***************info log start ***************' + '\n';
+  logText += "\n" + "***************info log start ***************" + "\n";
 
   // 响应内容
-  logText += 'info detail: ' + '\n' + JSON.stringify(info) + '\n';
+  logText += "info detail: " + "\n" + JSON.stringify(info) + "\n";
 
   // 响应日志结束
-  logText += '*************** info log end ***************' + '\n';
+  logText += "*************** info log end ***************" + "\n";
 
   return logText;
 };
 
 // 格式化响应日志
 var formatRes = function (ctx, resTime) {
-  var logText = '';
+  var logText = "";
   // 响应日志开始
-  logText += '\n' + '*************** response log start ***************' + '\n';
+  logText += "\n" + "*************** response log start ***************" + "\n";
 
   // 添加请求日志
   logText += formatReqLog(ctx.request, resTime);
 
   // 响应状态码
-  logText += 'response status: ' + ctx.status + '\n';
+  logText += "response status: " + ctx.status + "\n";
 
   // 响应内容
-  logText += 'response body: ' + '\n' + JSON.stringify(ctx.body) + '\n';
+  logText += "response body: " + "\n" + JSON.stringify(ctx.body) + "\n";
 
   // 响应日志结束
-  logText += '*************** response log end ***************' + '\n';
+  logText += "*************** response log end ***************" + "\n";
 
   return logText;
 };
 
 // 格式化错误日志
 var formatError = function (ctx, err, resTime) {
-  var logText = '';
+  var logText = "";
 
   // 错误信息开始
-  logText += '\n' + '*************** error log start ***************' + '\n';
+  logText += "\n" + "*************** error log start ***************" + "\n";
 
   // 添加请求日志
   logText += formatReqLog(ctx.request, resTime);
 
   // 错误名称
-  logText += 'err name: ' + err.name + '\n';
+  logText += "err name: " + err.name + "\n";
   // 错误信息
-  logText += 'err message: ' + err.message + '\n';
+  logText += "err message: " + err.message + "\n";
   // 错误详情
-  logText += 'err stack: ' + err.stack + '\n';
+  logText += "err stack: " + err.stack + "\n";
 
   // 错误信息结束
-  logText += '*************** error log end ***************' + '\n';
+  logText += "*************** error log end ***************" + "\n";
 
   return logText;
 };
 
 // 格式化请求日志
 var formatReqLog = function (req, resTime) {
-  var logText = '';
+  var logText = "";
 
   var method = req.method;
   // 访问方法
-  logText += '\n' + 'request method: ' + method + '\n';
+  logText += "\n" + "request method: " + method + "\n";
 
   // 请求原始地址
-  logText += 'request originalUrl:  ' + req.originalUrl + '\n';
-  
+  logText += "request originalUrl:  " + req.originalUrl + "\n";
+
   // 客户端ip
-  logText += 'request client ip:  ' + req.ip + '\n';
+  logText += "request client ip:  " + req.ip + "\n";
   // 开始时间
   //   var startTime;
   // 请求参数
-  if (method === 'GET') {
-    logText += 'request query:  ' + JSON.stringify(req.query) + '\n';
+  if (method === "GET") {
+    logText += "request query:  " + JSON.stringify(req.query) + "\n";
     // startTime = req.query.requestStartTime;
   } else {
-    logText += 'request body: ' + '\n' + JSON.stringify(req.body) + '\n';
+    logText += "request body: " + "\n" + JSON.stringify(req.body) + "\n";
     // startTime = req.body.requestStartTime;
   }
   // 服务器响应时间
-  logText += 'response time: ' + resTime + 'ms' + '\n';
+  logText += "response time: " + resTime + "ms" + "\n";
 
   return logText;
 };
@@ -136,6 +136,20 @@ module.exports = () => {
   return async (ctx, next) => {
     ctx.logger = logUtil;
     ctx.logger.reqLog(ctx, 0);
+    const start = new Date();
+    let ms = new Date() - start;
     await next();
+    try {
+      if (ctx.status === 404) {
+        ctx.throw(404);
+      }
+      ms = new Date() - start;
+      // 记录响应日志
+      ctx.logger.logResponse(ctx, ms);
+    } catch (error) {
+      ms = new Date() - start;
+      // 记录异常日志
+      ctx.logger.logError(ctx, error, ms);
+    }
   };
 };
