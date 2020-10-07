@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-06 10:37:16
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-06 11:11:46
+ * @LastEditTime: 2020-10-06 11:49:56
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\Interceptor\interceptorRequest.js
  */
@@ -21,7 +21,6 @@ module.exports = () => {
         jwtTool
           .verifyToken(req.headers.authorization)
           .then(async (res) => {
-            console.log(res);
             await next();
           })
           .catch(async (err) => {
