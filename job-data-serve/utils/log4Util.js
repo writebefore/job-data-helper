@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-05 18:52:22
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-06 11:05:43
+ * @LastEditTime: 2020-10-08 20:14:18
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\utils\log4Util.js
  */
@@ -123,7 +123,9 @@ var formatReqLog = function (req, resTime) {
     logText += "request query:  " + JSON.stringify(req.query) + "\n";
     // startTime = req.query.requestStartTime;
   } else {
-    logText += "request body: " + "\n" + JSON.stringify(req.body) + "\n";
+    const reqBody = {...req.body};
+    if(req.body.password) reqBody.password = 'XXXXXXXX';
+    logText += "request body: " + "\n" + JSON.stringify(reqBody) + "\n";
     // startTime = req.body.requestStartTime;
   }
   // 服务器响应时间
