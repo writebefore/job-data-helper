@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-08 16:57:44
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-08 18:14:55
+ * @LastEditTime: 2020-10-11 15:57:00
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\axios\service.js
  */
@@ -19,10 +19,14 @@ const service = axios.create({
   timeout: config.timeout, // 请求超时时间
   responseType: config.responseType,
 });
-
+const whiteList = ['/user/login', '/user/register'];
 /****** request拦截器==>对请求参数做处理 ******/
 service.interceptors.request.use(
   (config) => {
+    if(!whiteList.includes(config.url)){
+      config.headers["authorization"] = sessionStorage.getItem('authorization');
+    }
+
     if (
       config.method.toLocaleUpperCase() === "POST" ||
       config.method.toLocaleUpperCase() === "PUT" ||
@@ -30,6 +34,7 @@ service.interceptors.request.use(
       config.method.toLocaleUpperCase() === "DELETE"
     ) {
       config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+      console.log(config);
       config.data = qs.stringify(config.data);
       return config;
     } else {
@@ -51,7 +56,7 @@ service.interceptors.response.use(
     if (res.code <= 0) {
       Toast.fail({
         message: res.msg,
-        duration: 600,
+        duration: 800,
       });
       return Promise.reject(res);
     } else {

@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:17:40
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-07 15:43:29
+ * @LastEditTime: 2020-10-09 19:02:15
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\App.vue
 -->
@@ -18,18 +18,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  width: 100%;
+  height: 100%;
 }
 </style>

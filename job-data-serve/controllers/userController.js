@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-04 16:48:12
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-05 18:36:39
+ * @LastEditTime: 2020-10-12 23:46:52
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\userController.js
  */
@@ -13,7 +13,7 @@ const Services = require('../services/index');
 const register =async function(ctx, next){
     const req = ctx.request.body;
     console.log(ctx.request);
-    if(!(req.userName || req.password || req.userName.trim() || req.password.trim())){
+    if(!req.userName || !req.password || !req.userName.trim() || !req.password.trim()){
         ctx.body = new Response(-1, '账号密码不能为空',{})
         return;
     } 
@@ -29,7 +29,7 @@ const register =async function(ctx, next){
 // 用户登录
 const login = async function(ctx, next){
     const req = ctx.request.body;
-    if(!(req.userName || req.password || req.userName.trim() || req.password.trim())){
+    if(!req.userName || !req.password || !req.userName.trim() || !req.password.trim()){
         ctx.body = new Response(-1, '账号密码不能为空',{})
         return;
     } 

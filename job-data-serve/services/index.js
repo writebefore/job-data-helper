@@ -6,11 +6,9 @@
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\services\index.js
  */
-
 const registerService = require('./servicesApi/registerService')
 const loginService = require('./servicesApi/loginService');
 const findOneUserService = require('./servicesApi/findOneUserService');
-
 
 const Services = {
     registerService,
