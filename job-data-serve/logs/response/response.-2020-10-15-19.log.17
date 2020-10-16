@@ -1,0 +1,39 @@
+[2020-10-15T19:25:09.960] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+
+[2020-10-15T19:25:15.700] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /user/test
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+response status: 200
+response body: 
+"this is a test api"
+*************** response log end ***************
+
+[2020-10-15T19:25:15.849] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+

@@ -1,0 +1,42 @@
+[2020-10-15T19:16:24.992] [INFO] http - 
+request method: GET
+request originalUrl:  /user/test
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+
+[2020-10-15T19:16:25.324] [INFO] http - 
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+
+[2020-10-15T19:16:42.259] [INFO] http - 
+request method: GET
+request originalUrl:  /user/test
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+
+[2020-10-15T19:16:42.924] [INFO] http - 
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+
+[2020-10-15T19:17:37.759] [INFO] http - 
+request method: GET
+request originalUrl:  /user/test
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+
+[2020-10-15T19:17:38.058] [INFO] http - 
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+

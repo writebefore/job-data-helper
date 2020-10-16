@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-12 19:09:41
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-12 23:27:13
+ * @LastEditTime: 2020-10-13 23:21:40
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\cityList\CityList.vue
 -->
@@ -11,7 +11,9 @@
     <van-nav-bar
       title="城市列表"
       left-text="返回"
+      right-text="定位"
       @click-left="goBack"
+      @click-right="getLocation"
       left-arrow
     />
 
@@ -25,7 +27,7 @@
     <div class="container" v-show="!searchCity">
       <van-cell title="热门城市" :border="false" />
       <van-grid :gutter="8" clickable>
-        <van-grid-item v-for="value in hotCityList" :key="value" :text="value">
+        <van-grid-item v-for="value in hotCityList" :key="value" :text="value" @click="changeCity(value)">
         </van-grid-item>
       </van-grid>
       <van-index-bar :index-list="indexList">
@@ -35,7 +37,7 @@
             :index="item"
             :key="index"
           />
-          <van-cell v-else clickable :title="item" :key="index" />
+          <van-cell v-else clickable :title="item" :key="index" @click="changeCity(item)"/>
         </template>
       </van-index-bar>
     </div>
@@ -46,13 +48,14 @@
         clickable
         :title="item"
         :key="index"
+        @click="changeCity(item)"
       />
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
+
 import {
   IndexBar,
   IndexAnchor,
@@ -62,8 +65,9 @@ import {
   Grid,
   GridItem,
   Search,
+  Form,
 } from "vant";
-import cities from "./city.json";
+import Vue from "vue";
 Vue.use(IndexBar);
 Vue.use(IndexAnchor);
 Vue.use(NavBar);
@@ -72,6 +76,11 @@ Vue.use(Tag);
 Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(Search);
+Vue.use(Form);
+
+import cities from "./city.json";
+import { mapActions } from "vuex";
+import txMapApi from "../../utils/mapServer/index"
 export default {
   name: "cityList",
   data() {
@@ -93,7 +102,7 @@ export default {
         "天津",
       ],
       cityList: [...cities],
-      indexList:[],
+      indexList: [],
       searchResultList: [],
       searchCity: "",
     };
@@ -107,12 +116,25 @@ export default {
         return item.match(this.searchCity);
       });
     },
+    changeCity(city) {
+      this.chooseCity(city);
+      this.goBack();
+    },
+    getLocation(){
+      txMapApi.getLocalCity().then(res => {
+        let city = res.result.ad_info.city || res.result.ad_info.province;
+        city = city.substr(0, city.length - 1); // 去除城市名后缀 市或其他
+        this.changeCity(city);
+      }).catch(err => {
+        console.log(err);
+      })
+    },
+    ...mapActions(["chooseCity"]),
   },
   created() {
-    console.log(this.cityList);
-    this.indexList = this.cityList.filter(item => {
+    this.indexList = this.cityList.filter((item) => {
       return /[A-Z]{1}/.test(item);
-    })
+    });
   },
 };
 </script>
