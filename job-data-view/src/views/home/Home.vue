@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-11 15:59:48
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-13 23:38:13
+ * @LastEditTime: 2020-10-18 22:27:01
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\home\Home.vue
 -->
@@ -18,12 +18,15 @@
       </template>
     </van-nav-bar>
     <div class="container">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
+
     <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">标签</van-tabbar-item>
+      <van-tabbar-item icon="home-o" to="/home/overview">标签</van-tabbar-item>
       <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" to="/home/mine">标签</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -32,7 +35,6 @@
 import Vue from "vue";
 import { NavBar, Tabbar, TabbarItem, Icon } from "vant";
 import { mapGetters, mapActions } from "vuex";
-
 Vue.use(NavBar);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -62,5 +64,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang='less' scoped>
+.container {
+  overflow: hidden;
+  position: absolute;
+  top: 46px;
+  left: 0;
+  bottom: 50px;
+  right: 0;
+  margin: auto;
+}
 </style>

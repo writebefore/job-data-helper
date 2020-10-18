@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-12 19:25:52
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-12 20:43:06
+ * @LastEditTime: 2020-10-16 20:34:43
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getCityList.js
  */
@@ -52,4 +52,5 @@ const getCityList = () => {
       });
   });
 };
+getCityList()
 module.exports = getCityList

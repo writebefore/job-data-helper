@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-03 19:15:22
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-14 23:23:07
+ * @LastEditTime: 2020-10-18 15:12:28
  * @description: 服务入口文件
  * @FilePath: \job-data-helper\job-data-serve\app.js
  */
@@ -13,9 +13,9 @@ const json = require("koa-json");
 const bodyparser = require("koa-bodyparser"); // 解析参数
 const mongoose = require("mongoose"); // mongoDB驱动
 const log4Util = require("./utils/log4Util");
-const interceptorRequest = require("./Interceptor/interceptorRequest")
+const interceptorRequest = require("./Interceptor/interceptorRequest");
 const user = require("./routes/user");
-
+const job = require("./routes/job");
 // 配置文件
 const config = require("./config");
 
@@ -40,17 +40,15 @@ app.use(
 app.use(json());
 app.use(cors());
 
-
 // 日志 logger
 app.use(log4Util());
-
 
 // 请求拦截器
 app.use(interceptorRequest());
 
 // routes
 app.use(user.routes(), user.allowedMethods());
-
+app.use(job.routes(),user.allowedMethods());
 // 服务启动
 app.listen(config.port);
 console.log(`listening on port ${config.port}`);

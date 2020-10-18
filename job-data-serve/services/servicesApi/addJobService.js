@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-14 22:33:28
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-14 23:00:25
+ * @LastEditTime: 2020-10-18 23:32:21
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\services\servicesApi\addJobService.js
  */
@@ -19,7 +19,9 @@ const addJobService = async function (
   companySize,
   industryField,
   financeStage,
+  skillLabels,
   companyLabelList,
+  location,
   city,
   salary,
   salaryMonth,
@@ -38,7 +40,9 @@ const addJobService = async function (
     companySize,
     industryField,
     financeStage,
+    skillLabels,
     companyLabelList,
+    location,
     city,
     salary,
     salaryMonth,

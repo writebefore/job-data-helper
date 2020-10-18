@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-14 18:51:20
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-15 23:07:47
+ * @LastEditTime: 2020-10-18 23:33:55
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getJobData.js
  */
@@ -13,7 +13,7 @@ const getPageNumRegexp = /totalNum">(?<pageNum>[0-9]+)<\/span>/;
 let Cookie = "";
 let allPageNum = 0;
 
-const delay = 0; // 每个页面的爬取间隔
+const delay = 5000; // 每个页面的爬取间隔
 // 获取查询的页面数量
 const getPageNum = function (jobName, city, pageNum) {
   let first_request_url = encodeURI(
@@ -49,7 +49,9 @@ const getPageNum = function (jobName, city, pageNum) {
 
 const getJobDataList = function (jobName, city, pageNum = 1) {
   return new Promise((resolve, reject) => {
-    console.log(`总共页面: ${allPageNum}, 当前页面: ${pageNum}`);
+    console.log(
+      `总共页面: ${allPageNum}, 当前页面: ${pageNum}, 当前城市: ${city}, 当前项目: ${jobName}`
+    );
     const option = {
       host: "www.lagou.com",
       path: encodeURI(
@@ -89,7 +91,9 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
             reject(pageNum);
           } else {
             jobData = jobData.content.positionResult.result;
-            console.log("页面总数据:" + jobData.length);
+            console.log(
+              `页面总数据: ${jobData.length !== undefined ? jobData.length : 0}`
+            );
             jobData.forEach(async (item, index) => {
               const job = await Services.findOneJobService(item.positionId);
               if (job) {
@@ -107,7 +111,10 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
                   companySize,
                   industryField,
                   financeStage,
+                  skillLables: skillLabels, // 爬下来的数据原名称为skillLables
                   companyLabelList,
+                  latitude,
+                  longitude,
                   city: jobCity,
                   salary,
                   salaryMonth,
@@ -116,6 +123,7 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
                   education,
                   positionAdvantage,
                 } = item;
+                console.log(item);
                 const res = await Services.addJobService(
                   positionId,
                   jobName,
@@ -126,7 +134,9 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
                   companySize,
                   industryField,
                   financeStage,
+                  skillLabels,
                   companyLabelList,
+                  { latitude, longitude },
                   jobCity,
                   salary,
                   salaryMonth,
@@ -148,7 +158,7 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
         }
       });
       req.on("error", function (e) {
-        console.log("problem with request: " + e.message);
+        console.log("problem with request: " + e);
         reject(err);
       });
     });
@@ -158,64 +168,34 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
 };
 
 const getJobData = function (jobName, city, pageNum = 1) {
-  return new Promise((resolve, reject) => {
-    if (Cookie === "") {
-      getPageNum(jobName, city, pageNum)
-        .then((res) => {
-          console.log(res);
-          getJobDataList(jobName, city, pageNum)
-            .then((res) => {
-              if (res <= allPageNum) {
-                getJobData(jobName, city, res);
-              } else {
-                Cookie = "";
-                allPageNum = 0;
-                resolve(`${jobName},${city}获取数据完成`);
-              }
-            })
-            .catch((err) => {
-              if (typeof err === "number") {
-                setTimeout(() => {
-                  getJobData(jobName, city, err);
-                }, delay);
-              } else {
-                reject(err);
-              }
-            });
-        })
-        .catch((err) => {
-          if (typeof err === "number") {
-            setTimeout(() => {
-              getJobData(jobName, city, err);
-            }, delay);
-          } else {
-            reject(err);
-          }
-        });
-    } else {
-      getJobDataList(jobName, city, pageNum)
-        .then((res) => {
-          if (res <= allPageNum) {
-            setTimeout(() => {
-              getJobData(jobName, city, res);
-            }, delay);
-          } else {
-            Cookie = "";
-            allPageNum = 0;
-            resolve(`${jobName},${city}获取数据完成`);
-          }
-        })
-        .catch((err) => {
-          if (typeof err === "number") {
-            setTimeout(() => {
-              getJobData(jobName, city, err);
-            }, delay);
-          } else {
-            reject(err);
-          }
-        });
-    }
-  })
+  return new Promise(async (resolve, reject) => {
+    const tmpFun = async function (jobName, city, pageNum) {
+      try {
+        if (Cookie === "") {
+          const getPageNumRes = await getPageNum(jobName, city, pageNum);
+          console.log(getPageNumRes);
+        }
+        const getJobDataListRes = await getJobDataList(jobName, city, pageNum);
+        if (getJobDataListRes <= allPageNum) {
+          tmpFun(jobName, city, getJobDataListRes);
+        } else {
+          Cookie = "";
+          pageNum = 0;
+          resolve(`${jobName},${city}获取数据完成`);
+        }
+      } catch (e) {
+        if (typeof e === "number") {
+          Cookie = "";
+          setTimeout(() => {
+            tmpFun(jobName, city, e);
+          }, delay);
+        } else {
+          reject(e);
+        }
+      }
+    };
+    tmpFun(jobName, city, pageNum);
+  });
 };
 
 module.exports = getJobData;

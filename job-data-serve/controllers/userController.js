@@ -2,13 +2,12 @@
  * @Author: LHN
  * @Date: 2020-10-04 16:48:12
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-12 23:46:52
+ * @LastEditTime: 2020-10-18 15:48:14
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\userController.js
  */
 const Response = require('../entity/index');
 const Services = require('../services/index');
-
 // 用户注册
 const register =async function(ctx, next){
     const req = ctx.request.body;

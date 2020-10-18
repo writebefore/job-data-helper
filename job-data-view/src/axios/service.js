@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-08 16:57:44
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-11 15:57:00
+ * @LastEditTime: 2020-10-18 12:11:06
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\axios\service.js
  */
@@ -34,7 +34,6 @@ service.interceptors.request.use(
       config.method.toLocaleUpperCase() === "DELETE"
     ) {
       config.headers["Content-Type"] = "application/x-www-form-urlencoded";
-      console.log(config);
       config.data = qs.stringify(config.data);
       return config;
     } else {

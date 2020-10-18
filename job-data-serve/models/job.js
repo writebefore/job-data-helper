@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-14 22:05:27
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-14 23:10:13
+ * @LastEditTime: 2020-10-18 23:31:25
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\models\job.js
  */
@@ -38,8 +38,14 @@ const JobSchema = Schema(
     financeStage: {
       type: String,
     },
+    skillLabels:{
+      type: Array,
+    },
     companyLabelList: {
       type: Array,
+    },
+    location:{
+      type:Object,
     },
     city: {
       type: String,
