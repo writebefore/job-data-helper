@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-12 19:25:52
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-16 20:34:43
+ * @LastEditTime: 2020-10-19 16:44:28
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getCityList.js
  */
@@ -42,7 +42,6 @@ const getCityList = () => {
           while ((city = getCityRegexp.exec(html)) != null) {
             cityArr.push(city[1]);
           }
-          console.log("城市列表获取成功");
           resolve(cityArr);  // 数组中第一个元素为'全国'
         });
       })
@@ -52,5 +51,4 @@ const getCityList = () => {
       });
   });
 };
-getCityList()
 module.exports = getCityList

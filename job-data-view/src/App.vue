@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:17:40
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-09 19:02:15
+ * @LastEditTime: 2020-10-19 14:20:23
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\App.vue
 -->
@@ -14,7 +14,7 @@
 
 <style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

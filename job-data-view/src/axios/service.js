@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-08 16:57:44
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-18 12:11:06
+ * @LastEditTime: 2020-10-19 20:14:32
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\axios\service.js
  */
@@ -19,12 +19,12 @@ const service = axios.create({
   timeout: config.timeout, // 请求超时时间
   responseType: config.responseType,
 });
-const whiteList = ['/user/login', '/user/register'];
+const whiteList = ["/user/login", "/user/register"];
 /****** request拦截器==>对请求参数做处理 ******/
 service.interceptors.request.use(
   (config) => {
-    if(!whiteList.includes(config.url)){
-      config.headers["authorization"] = sessionStorage.getItem('authorization');
+    if (!whiteList.includes(config.url)) {
+      config.headers["authorization"] = sessionStorage.getItem("authorization");
     }
 
     if (
@@ -35,10 +35,10 @@ service.interceptors.request.use(
     ) {
       config.headers["Content-Type"] = "application/x-www-form-urlencoded";
       config.data = qs.stringify(config.data);
-      return config;
     } else {
-      config.params = { ...config.params };
+      config.params = {...config.data};
     }
+    return config;
   },
   (err) => {
     //请求错误处理

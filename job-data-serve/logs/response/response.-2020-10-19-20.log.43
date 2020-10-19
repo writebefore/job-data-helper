@@ -1,0 +1,39 @@
+[2020-10-19T20:04:17.179] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?searchKey=%E5%8C%97%E4%BA%AC
+request client ip:  ::ffff:127.0.0.1
+request query:  {"searchKey":"北京"}
+response time: 1ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+
+[2020-10-19T20:04:55.705] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?searchKey=%E5%8C%97%E4%BA%AC
+request client ip:  ::ffff:127.0.0.1
+request query:  {"searchKey":"北京"}
+response time: 1ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+
+[2020-10-19T20:04:56.058] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?searchKey=%E5%8C%97%E4%BA%AC
+request client ip:  ::ffff:127.0.0.1
+request query:  {"searchKey":"北京"}
+response time: 0ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+

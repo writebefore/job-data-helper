@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-14 18:51:20
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-18 23:33:55
+ * @LastEditTime: 2020-10-19 14:40:17
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getJobData.js
  */
@@ -111,7 +111,7 @@ const getJobDataList = function (jobName, city, pageNum = 1) {
                   companySize,
                   industryField,
                   financeStage,
-                  skillLables: skillLabels, // 爬下来的数据原名称为skillLables
+                  skillLables: skillLabels, // 爬下来的数据原名称为skillLables 改为skillLabels
                   companyLabelList,
                   latitude,
                   longitude,

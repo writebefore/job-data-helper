@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:47:19
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-12 14:18:08
+ * @LastEditTime: 2020-10-19 13:48:23
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\login\Login.vue
 -->
@@ -42,7 +42,9 @@
           placeholder="请输入密码"
         />
         <div class="login-button">
-          <van-button type="primary" native-type="submit" plain size="large"><span>{{ isLogin ? "登录" : "注册" }}</span></van-button>
+          <van-button type="primary" native-type="submit" plain size="large"
+            ><span>{{ isLogin ? "登录" : "注册" }}</span></van-button
+          >
         </div>
       </van-form>
 
@@ -64,7 +66,7 @@ Vue.use(Button);
 Vue.use(Field);
 Vue.use(Toast);
 Vue.use(Form);
-Vue.use(Toast)
+Vue.use(Toast);
 export default {
   name: "login",
   data() {
@@ -86,7 +88,7 @@ export default {
     },
     // 提交事件
     onSubmit() {
-      this.isLogin ? this.login() : this.register(); 
+      this.isLogin ? this.login() : this.register();
     },
     // 登录事件
     async login() {
@@ -106,6 +108,7 @@ export default {
           },
         });
       } catch (err) {
+        Toast.fail('登录失败')
         console.log(err);
       }
     },
@@ -137,7 +140,7 @@ export default {
     },
     // 表单验证失败
     onFailed() {
-      Toast.fail('请按要求输入表单内容!')
+      Toast.fail("请按要求输入表单内容!");
     },
   },
 };
