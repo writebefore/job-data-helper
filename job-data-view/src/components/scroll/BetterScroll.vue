@@ -5,6 +5,7 @@
 </template>
 
 <script>
+
 import BScroll from "@better-scroll/core";
 
 const DIRECTION_H = "horizontal";
@@ -48,14 +49,23 @@ export default {
       type: Array,
       default: null,
     },
+    /**
+     * 是否派发滚动到底部的事件，用于上拉加载
+     */
     pullup: {
       type: Boolean,
       default: false,
     },
+    /**
+     * 是否派发顶部下拉的事件，用于下拉刷新
+     */
     pulldown: {
       type: Boolean,
       default: false,
     },
+    /**
+     * 是否派发列表滚动开始的事件
+     */
     beforeScroll: {
       type: Boolean,
       default: false,
@@ -103,7 +113,7 @@ export default {
 
       // 是否派发顶部下拉事件，用于下拉刷新
       if (this.pulldown) {
-        this.scroll.on("touchend", (pos) => {
+        this.scroll.on("touchEnd", (pos) => {
           // 下拉动作
           if (pos.y > 50) {
             this.$emit("pulldown");
@@ -147,11 +157,11 @@ export default {
     });
   },
   watch: {
-      data() {
-        setTimeout(() => {
-            this.refresh()
-        }, this.refreshDelay)
-      }
+    data() {
+      setTimeout(() => {
+        this.refresh();
+      }, this.refreshDelay);
+    },
   },
 };
 </script>
