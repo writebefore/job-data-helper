@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 15:06:37
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 20:24:07
+ * @LastEditTime: 2020-10-20 16:03:16
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\jobController.js
  */
@@ -13,7 +13,7 @@ const Knuth = require("../utils/Knuth");
 const getJobData = async function (ctx, next) {
   try {
     const { city, searchKey } = ctx.request.query;
-    console.log(`查找信息为${city},${searchKey}`); 
+    console.log(`查找信息为${city},${searchKey}`);
     let allJobData = await Services.findJobDataService(searchKey, city);
     allJobData = Knuth(allJobData); // 洗牌算法打乱结果
     const jobData = [];
@@ -37,18 +37,9 @@ const getJobData = async function (ctx, next) {
 };
 
 const getMoreJobData = async function (ctx, next) {
-  const res = await Services.getMoreJobDataService([
-    "7186964",
-    "7262224",
-    "7337792",
-    "7660926",
-    "7247860",
-    "7030248",
-    "7049335",
-    "7762901",
-    "5060349",
-    "5600071",
-  ]);
+  const { jobDataIds } = ctx.request.body;
+  ctx.status = 200;
+  const res = await Services.getMoreJobDataService([...jobDataIds]);
   ctx.body = new Response(1, "加载更多数据成功", res);
 };
 

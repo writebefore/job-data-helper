@@ -1,0 +1,23 @@
+[2020-10-20T16:18:57.718] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7636730","7686843","7375774","7670756","7753883","7184906","5679805","4320696","6451840","7746291","5451634","7403728","7848725","7344360","7612061","6492249","6900288","7516672","6342256","7000810"]}
+response time: 0ms
+
+[2020-10-20T16:18:59.221] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7663208","7774555","7669976","7176390","5571245","7625590","7782875","7715178","3913177","7719065","7810835","7821524","7518870","7669434","7306846","7454889","7843958","7024194","7701426","7825097"]}
+response time: 0ms
+
+[2020-10-20T16:19:07.780] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E4%B8%8A%E6%B5%B7&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"上海","searchKey":"前端"}
+response time: 0ms
+

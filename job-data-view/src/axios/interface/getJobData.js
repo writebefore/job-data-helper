@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-19 18:58:24
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 19:01:14
+ * @LastEditTime: 2020-10-20 11:44:17
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\axios\interface\getJobData.js
  */

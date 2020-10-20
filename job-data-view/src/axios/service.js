@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-08 16:57:44
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 20:14:32
+ * @LastEditTime: 2020-10-20 13:07:18
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\axios\service.js
  */
@@ -38,6 +38,7 @@ service.interceptors.request.use(
     } else {
       config.params = {...config.data};
     }
+    console.log(config);
     return config;
   },
   (err) => {

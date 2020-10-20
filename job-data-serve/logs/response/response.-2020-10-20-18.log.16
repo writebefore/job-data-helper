@@ -1,0 +1,14 @@
+[2020-10-20T18:43:58.646] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7822339","6674846","7450289"]}
+response time: 30ms
+response status: 200
+response body: 
+{"code":1,"msg":"加载更多数据成功","data":[{"skillLabels":["Web前端","Node.js","React native","React"],"companyLabelList":[],"_id":"5f8c631a9c8ca433603e6732","positionId":"7822339","searchKey":"前端","positionName":"前端工程师","companyFullName":"深圳市金顺福科技有限公司","companyShortName":"金顺福","companyLogo":"images/logo_default.png","companySize":"15-50人","industryField":"游戏","financeStage":"未融资","location":{"latitude":"24.468798","longitude":"118.089728"},"city":"厦门","salary":"20k-40k","salaryMonth":"13","workYear":"在校/应届","jobNature":"全职","education":"大专","positionAdvantage":"出国机会、年度旅游、包吃住、带薪休假","createDate":"2020-10-18"},{"skillLabels":["前端开发","Javascript"],"companyLabelList":["五险一金","生日福利","带薪年假","公司下午茶"],"_id":"5f8c631d9c8ca433603e6748","positionId":"6674846","searchKey":"前端","positionName":"3D前端工程师","companyFullName":"厦门指纹科技有限公司","companyShortName":"指纹科技","companyLogo":"i/image3/M01/84/E7/Cgq2xl6NdxGAALfeAASvHRsnfKM182.png","companySize":"150-500人","industryField":"电商","financeStage":"不需要融资","location":{"latitude":"24.482221","longitude":"118.17472"},"city":"厦门","salary":"12k-20k","salaryMonth":"0","workYear":"3-5年","jobNature":"全职","education":"本科","positionAdvantage":"前端 3D","createDate":"2020-10-18"},{"skillLabels":["前端开发","Web前端","Vue"],"companyLabelList":[],"_id":"5f8c631e9c8ca433603e674f","positionId":"7450289","searchKey":"前端","positionName":"高级前端研发，Vue","companyFullName":"厦门驾驭信息科技有限公司","companyShortName":"驾驭科技","companyLogo":"i/image/M00/8B/68/CgpFT1rsRVuABLb5AAAR0A2r3U4136.png","companySize":"15-50人","industryField":"广告营销,文娱丨内容","financeStage":"不需要融资","location":{"latitude":"24.528529","longitude":"118.162722"},"city":"厦门","salary":"8k-13k","salaryMonth":"0","workYear":"3-5年","jobNature":"全职","education":"本科","positionAdvantage":"五险一金、节日福利、定期团建","createDate":"2020-10-18"}]}
+*************** response log end ***************
+

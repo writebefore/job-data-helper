@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-11 15:59:48
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-18 22:27:01
+ * @LastEditTime: 2020-10-20 19:40:19
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\home\Home.vue
 -->
@@ -11,11 +11,9 @@
     <van-nav-bar
       title="职位信息"
       :left-text="getTotalCity"
+      :right-text="jobType"
       @click-left="chooseCity"
     >
-      <template #right>
-        <van-icon name="wap-nav" size="18" />
-      </template>
     </van-nav-bar>
     <div class="container">
       <keep-alive>
@@ -23,10 +21,10 @@
       </keep-alive>
     </div>
 
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o" to="/home/overview">标签</van-tabbar-item>
-      <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="friends-o" to="/home/mine">标签</van-tabbar-item>
+    <van-tabbar route>
+      <van-tabbar-item icon="home-o" to="/home/overview">职位</van-tabbar-item>
+      <van-tabbar-item icon="search" to="/home/chart">图表</van-tabbar-item>
+      <van-tabbar-item icon="friends-o" to="/home/mine">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -46,6 +44,7 @@ export default {
     return {
       active: 0, //当前选中页面
       user: {}, // 当前用户信息
+      jobType:'前端', //职位类别
     };
   },
   computed: {

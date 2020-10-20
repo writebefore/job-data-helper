@@ -1,0 +1,28 @@
+[2020-10-20T17:00:20.160] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E8%A5%BF%E5%AE%89&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"西安","searchKey":"前端"}
+response time: 0ms
+
+[2020-10-20T17:02:14.095] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E8%A5%BF%E5%AE%89&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"西安","searchKey":"前端"}
+response time: 0ms
+
+[2020-10-20T17:02:16.494] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%85%A8%E5%9B%BD&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"全国","searchKey":"前端"}
+response time: 0ms
+
+[2020-10-20T17:02:22.497] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E8%A5%BF%E5%AE%89&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"西安","searchKey":"前端"}
+response time: 0ms
+

@@ -1,0 +1,14 @@
+[2020-10-20T18:42:01.821] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7609345","6590928","7161961","6750456"]}
+response time: 36ms
+response status: 200
+response body: 
+{"code":1,"msg":"加载更多数据成功","data":[{"skillLabels":["部门管理","技术管理","高级技术管理","运维管理"],"companyLabelList":["专项奖金","绩效奖金","年终分红","股票期权"],"_id":"5f8eb1fa18778d30201c3ae6","positionId":"7609345","searchKey":"前端","positionName":"计算机开发高级工程师","companyFullName":"南昌云宜然科技有限公司","companyShortName":"云宜然科技","companyLogo":"i/image2/M01/71/68/CgotOVtZeRCAeuRjAACl45Zw9xA867.jpg","companySize":"15-50人","industryField":"数据服务,硬件","financeStage":"未融资","location":{"latitude":"28.675525","longitude":"115.989218"},"city":"南昌","salary":"8k-12k","salaryMonth":"0","workYear":"5-10年","jobNature":"全职","education":"本科","positionAdvantage":"有管理信息技术项目能力的技术大牛","createDate":"2020-10-20"},{"skillLabels":["前端开发","Vue","Web前端"],"companyLabelList":[],"_id":"5f8eb1f918778d30201c3ad5","positionId":"6590928","searchKey":"前端","positionName":"web前端开发工程师","companyFullName":"安徽皖通科技股份有限公司江西分公司","companyShortName":"皖通科技","companyLogo":"i/image2/M01/A1/1C/CgoB5l235X-AOjFtAAAWbMRjUNQ443.gif","companySize":"500-2000人","industryField":"移动互联网","financeStage":"上市公司","location":{"latitude":"28.674599","longitude":"115.847756"},"city":"南昌","salary":"8k-15k","salaryMonth":"0","workYear":"3-5年","jobNature":"全职","education":"大专","positionAdvantage":"上市公司，入职五险一金，政府项目","createDate":"2020-10-20"},{"skillLabels":["前端开发","Web前端","Vue","React native"],"companyLabelList":["年底双薪","股票期权","带薪年假","午餐补助"],"_id":"5f8eb1f818778d30201c3ab8","positionId":"7161961","searchKey":"前端","positionName":"高级前端开发工程师","companyFullName":"江西国泰利民信息科技有限公司","companyShortName":"国泰利民","companyLogo":"i/image3/M00/4E/35/CgpOIFrq7YGADJ4TAAAUwdYOy_Y126.jpg","companySize":"150-500人","industryField":"数据服务,移动互联网","financeStage":"未融资","location":{"latitude":"28.696431","longitude":"115.961474"},"city":"南昌","salary":"12k-22k","salaryMonth":"0","workYear":"5-10年","jobNature":"全职","education":"本科","positionAdvantage":"国企，餐补，五险一金，双休","createDate":"2020-10-20"},{"skillLabels":["Java"],"companyLabelList":["技能培训","年底双薪","带薪年假","绩效奖金"],"_id":"5f8eb1fa18778d30201c3adc","positionId":"6750456","searchKey":"前端","positionName":"GIS开发工程师","companyFullName":"北京泰豪电力技术有限公司","companyShortName":"泰豪软件","companyLogo":"i/image2/M00/19/FD/CgotOVoACBqAU_gFAABs9DSYVy8111.png","companySize":"500-2000人","industryField":"企业服务","financeStage":"上市公司","location":{"latitude":"28.687238","longitude":"115.959806"},"city":"南昌","salary":"8k-12k","salaryMonth":"0","workYear":"1-3年","jobNature":"全职","education":"本科","positionAdvantage":"五险一金，油补、话费补贴等","createDate":"2020-10-20"}]}
+*************** response log end ***************
+

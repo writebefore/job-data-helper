@@ -1,0 +1,27 @@
+[2020-10-20T17:41:29.004] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: POST
+request originalUrl:  /user/login
+request client ip:  ::ffff:192.168.31.25
+request body: 
+{"userName":"admin","password":"XXXXXXXX"}
+response time: 14ms
+response status: 200
+response body: 
+{"code":1,"msg":"登陆成功","data":{"headerImg":"","createTime":"1601813266753","_id":"5f79bb1bc5bb055308e4de33","userId":"3c9268f0-063a-11eb-b3a2-1b091262f201","userName":"admin","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoZWFkZXJJbWciOiIiLCJjcmVhdGVUaW1lIjoiMTYwMTgxMzI2Njc1MyIsIl9pZCI6IjVmNzliYjFiYzViYjA1NTMwOGU0ZGUzMyIsInVzZXJJZCI6IjNjOTI2OGYwLTA2M2EtMTFlYi1iM2EyLTFiMDkxMjYyZjIwMSIsInVzZXJOYW1lIjoiYWRtaW4iLCJpYXQiOjE2MDMxODY4ODksImV4cCI6MTYwMzI0MDg4OX0.wWO69BXDsrQ-1YJz8EZ6nsN4sayLRI14lez-JfXoMiQ"}}
+*************** response log end ***************
+
+[2020-10-20T17:41:29.289] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?city=%E6%9C%AA%E7%9F%A5&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:192.168.31.25
+request query:  {"city":"未知","searchKey":"前端"}
+response time: 27ms
+response status: 200
+response body: 
+{"code":1,"msg":"首次获取职位信息成功","data":{"jobListId":[],"jobData":[],"everyGetLimit":20}}
+*************** response log end ***************
+

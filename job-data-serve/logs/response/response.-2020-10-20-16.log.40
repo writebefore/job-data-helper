@@ -1,0 +1,26 @@
+[2020-10-20T16:31:05.027] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%8D%97%E6%98%8C&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"南昌","searchKey":"前端"}
+response time: 19ms
+response status: 200
+response body: 
+{"code":1,"msg":"首次获取职位信息成功","data":{"jobListId":[],"jobData":[],"everyGetLimit":20}}
+*************** response log end ***************
+
+[2020-10-20T16:31:38.306] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%8D%97%E6%98%8C&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"南昌","searchKey":"前端"}
+response time: 9ms
+response status: 200
+response body: 
+{"code":1,"msg":"首次获取职位信息成功","data":{"jobListId":[],"jobData":[],"everyGetLimit":20}}
+*************** response log end ***************
+

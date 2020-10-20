@@ -1,0 +1,24 @@
+[2020-10-20T16:05:25.244] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["6999324","7770464","7224787","7803901","7660541","7826390","4140037","7584175","6686856","7662316","7441322","7765568","7555045","7751566","7306846","7670756","7807798","7829289","7517492","7556219"]}
+response time: 0ms
+
+[2020-10-20T16:05:28.573] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7741943","7171370","7671933","7554050","7082688","6820094","7757466","7817098","6658829","7544539","7835841","7398821","7454889","7765993","7695203","7848689","7807574","7846064","7776019","7387045"]}
+response time: 0ms
+
+[2020-10-20T16:05:30.985] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"jobDataIds":["7527550","7836229","7777269","7131876","7082540","7764646","6702066","7452197","7813734","7626703","7314786","4320696","7480592","7638017","7626270","7799677","7571014","6179754","6989310","7798896"]}
+response time: 0ms
+

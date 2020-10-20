@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-03 19:29:34
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 22:46:53
+ * @LastEditTime: 2020-10-20 16:00:07
  * @description: 配置文件
  * @FilePath: \job-data-helper\job-data-serve\config.js
  */
@@ -16,7 +16,7 @@ module.exports = {
         connectTimeoutMS: 1000, // 超时时间
     },
     saltTimes: 3, // 密码加盐次数
-    requestWhiteList:['/user/login','/user/register','/user/test','/job/test','/job/getJobData'], // token 验证白名单
+    requestWhiteList:['/user/login','/user/register','/user/test','/job/test'], // token 验证白名单
     getAllJobDataLimit: 1000, // 每次总查询限制
     getJobDataLimit: 20, // 每次获取职位数量限制
 }

@@ -1,0 +1,30 @@
+[2020-10-20T17:42:50.650] [INFO] http - 
+request method: POST
+request originalUrl:  /user/login
+request client ip:  ::ffff:192.168.31.25
+request body: 
+{"userName":"admin","password":"XXXXXXXX"}
+response time: 0ms
+
+[2020-10-20T17:42:50.730] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%8C%97%E4%BA%AC&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:192.168.31.25
+request query:  {"city":"北京","searchKey":"前端"}
+response time: 0ms
+
+[2020-10-20T17:43:00.690] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getMoreJobData
+request client ip:  ::ffff:192.168.31.25
+request body: 
+{"jobDataIds":["7593000","7123995","7689432","7747539","7726002","7161469","7596181","7174178","7422005","7672435","7756342","7689454","7686099","7805693","7657187","7782934","6574096","7727946","7629421","6849772"]}
+response time: 0ms
+
+[2020-10-20T17:43:15.777] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%85%A8%E5%9B%BD&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:192.168.31.247
+request query:  {"city":"全国","searchKey":"前端"}
+response time: 0ms
+
