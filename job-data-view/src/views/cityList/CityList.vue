@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-12 19:09:41
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-13 23:21:40
+ * @LastEditTime: 2020-10-22 19:09:07
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\cityList\CityList.vue
 -->
@@ -133,7 +133,7 @@ export default {
   },
   created() {
     this.indexList = this.cityList.filter((item) => {
-      return /[A-Z]{1}/.test(item);
+      return /[A-Z]{1}/.test(item);// 过滤索引
     });
   },
 };

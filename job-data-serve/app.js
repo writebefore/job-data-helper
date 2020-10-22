@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-03 19:15:22
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 20:02:03
+ * @LastEditTime: 2020-10-21 19:33:22
  * @description: 服务入口文件
  * @FilePath: \job-data-helper\job-data-serve\app.js
  */
@@ -18,7 +18,7 @@ const user = require("./routes/user");
 const job = require("./routes/job");
 // 配置文件
 const config = require("./config");
-
+const Services = require('./services/index')
 // 连接mongoDB
 console.log("mongoDB数据库连接中...");
 mongoose.connect(config.dbURL, config.dbConnectOptions).then(

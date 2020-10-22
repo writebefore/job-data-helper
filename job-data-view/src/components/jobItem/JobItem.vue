@@ -2,32 +2,30 @@
  * @Author: LHN
  * @Date: 2020-10-18 16:54:01
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 20:45:59
+ * @LastEditTime: 2020-10-22 23:16:01
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\components\jobItem\JobItem.vue
 -->
 <template>
-  <div class="jobItem">
+  <div :class="['jobItem',isTouch ? 'touch' : '']" @touchstart="touchStart" @touchend="touchEnd">
     <div class="wrap">
       <div class="company_img">
-        <van-image
-          width="4rem"
-          height="4rem"
-          :src="`https://www.lagou.com/${jobData.companyLogo}`"
-        />
+        <van-image width="4rem" height="4rem" :src="`https://www.lagou.com/${jobData.companyLogo}`" />
       </div>
       <div class="job_desc">
         <div class="job_desc-left">
-          <h2 class="company_name">{{jobData.companyShortName}}</h2>
-          <div class="job_name">{{`${jobData.positionName} [${jobData.city}]`}}</div>
+          <h2 class="company_name">{{ jobData.companyShortName }}</h2>
+          <div class="job_name">
+            {{ `${jobData.positionName} [${jobData.city}]` }}
+          </div>
           <div class="job-tag">
-            <span class="tag" v-for="(item,index) in jobData.skillLabels" :key="index">
-              <van-tag plain type="primary">{{item}}</van-tag>
+            <span class="tag" v-for="(item, index) in jobData.skillLabels" :key="index">
+              <van-tag plain type="primary">{{ item }}</van-tag>
             </span>
           </div>
         </div>
         <div class="job_desc-right">
-          <div class="salary">{{jobData.salary}}</div>
+          <div class="salary">{{ jobData.salary }}</div>
         </div>
       </div>
     </div>
@@ -43,17 +41,30 @@ Vue.use(VanImage);
 export default {
   name: "jobItem",
   props: {
-    jobData:{
-      type:Object,
-      default: function () {
-        return {}
-      }
+    jobData: {
+      type: Object,
+      default: function() {
+        return {};
+      },
+    },
+  },
+  data() {
+    return {
+      isTouch:false
+    }
+  },
+  methods: {
+    touchStart(){
+      this.isTouch = true;
+    },
+    touchEnd(){
+      this.isTouch = false
     }
   },
 };
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 @import url("../../assets/css/common.less");
 .jobItem {
   height: 6rem;
@@ -62,6 +73,9 @@ export default {
   border-bottom: 1px #e8e8e8 solid;
 }
 
+.touch {
+  background-color: #eee;
+}
 .wrap {
   display: flex;
   height: 4rem;

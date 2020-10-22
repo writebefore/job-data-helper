@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 15:06:37
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-20 16:03:16
+ * @LastEditTime: 2020-10-21 19:36:17
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\jobController.js
  */
@@ -43,7 +43,18 @@ const getMoreJobData = async function (ctx, next) {
   ctx.body = new Response(1, "加载更多数据成功", res);
 };
 
+const getJobDataGroupBy = async function (ctx, next) {
+  const { searchKey, groupBy, city = "全国" } = ctx.request.body;
+  ctx.status = 200;
+  try {
+    const res = await Services.groupJobDataByService(searchKey, groupBy, city);
+    ctx.body = new Response(1, "获取数据分组成功", res);
+  } catch (err) {
+    ctx.body = new Response(0, "获取数据分组失败", err);
+  }  
+};
 module.exports = {
   getJobData,
   getMoreJobData,
+  getJobDataGroupBy,
 };

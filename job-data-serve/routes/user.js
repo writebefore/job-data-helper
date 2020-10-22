@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-04 15:14:04
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-20 17:48:27
+ * @LastEditTime: 2020-10-21 17:56:54
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\routes\user.js
  */
@@ -26,7 +26,7 @@ router.get("/test", async function (ctx, next) {
       console.log(e);
     }
   };
-  await getAllCity("前端", cityList,80);
+  await getAllCity("前端", cityList);
   ctx.body = "test";
 });
 
