@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:47:19
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 13:48:23
+ * @LastEditTime: 2020-10-23 19:06:52
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\login\Login.vue
 -->
@@ -108,7 +108,7 @@ export default {
           },
         });
       } catch (err) {
-        Toast.fail('登录失败')
+        Toast.fail(err.msg)
         console.log(err);
       }
     },

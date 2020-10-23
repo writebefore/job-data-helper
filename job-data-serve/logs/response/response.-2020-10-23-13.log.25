@@ -1,0 +1,40 @@
+[2020-10-23T13:18:16.502] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: POST
+request originalUrl:  /job/getJobDataGroupBy
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"searchKey":"前端","groupBy":"createDate","city":"全国"}
+response time: 24ms
+response status: 200
+response body: 
+{"code":1,"msg":"获取数据分组成功","data":[{"_id":"2020-10-18","count":4223},{"_id":"2020-10-19","count":28},{"_id":"2020-10-20","count":1947},{"_id":"2020-10-21","count":276},{"_id":"2020-10-23","count":46}]}
+*************** response log end ***************
+
+[2020-10-23T13:18:17.858] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /user/test
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 30060ms
+response status: 200
+response body: 
+"test"
+*************** response log end ***************
+
+[2020-10-23T13:18:18.092] [INFO] resLogger - 
+*************** response log start ***************
+
+request method: GET
+request originalUrl:  /favicon.ico
+request client ip:  ::ffff:127.0.0.1
+request query:  {}
+response time: 0ms
+response status: 401
+response body: 
+{"code":-1,"msg":"invalid token","data":{}}
+*************** response log end ***************
+

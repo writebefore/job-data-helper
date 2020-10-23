@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-17 17:10:48
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-22 22:51:52
+ * @LastEditTime: 2020-10-23 14:01:22
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\overview\Overview.vue
 -->
@@ -17,7 +17,7 @@
         </van-pull-refresh>
       </div>
     </better-scroll>
-    <van-empty image="search" description="描述文字" v-show="!jobData.length"/>
+    <van-empty image="search" description="描述文字" v-show="!jobData.length" />
   </div>
 </template>
 
@@ -26,7 +26,7 @@ import JobItem from "../../components/jobItem/JobItem";
 import BetterScroll from "@/components/scroll/BetterScroll";
 import { mapGetters } from "vuex";
 import Vue from "vue";
-import { PullRefresh, List, Empty  } from "vant";
+import { PullRefresh, List, Empty } from "vant";
 
 Vue.use(PullRefresh);
 Vue.use(List);
@@ -51,12 +51,42 @@ export default {
       pullup: true,
 
       // 是否有数据
-      hasData:false,
+      hasData: false,
     };
   },
   components: {
     JobItem,
     BetterScroll,
+  },
+  computed: {
+    ...mapGetters(["getTotalCity"]),
+    // salaryData() {
+    //   if (this.jobData.length === 0) {
+    //     return {
+    //       minSalary: "未知",
+    //       averageSalary: "未知",
+    //       maxSalary: "未知",
+    //     };
+    //   } else {
+    //     let min = Number.MAX_SAFE_INTEGER;
+    //     let max = Number.MIN_SAFE_INTEGER;
+    //     let sum = 0;
+    //     const jobData = [...this.jobData];
+    //     console.log(jobData);
+    //     for (let item of jobData) {
+    //       let salary = item.salary.split('-');
+    //       const start = parseInt(salary[0]);
+    //       const end = parseInt(salary[1]);
+    //       min = Math.min(min,start);
+    //       max = Math.max(max,end);
+    //     }
+    //     return {
+    //       minSalary: `${min}k`,
+    //       averageSalary: `${(average/jobData.length).toFixed(1)}k`,
+    //       maxSalary: `${max}k`,
+    //     };
+    //   }
+    // },
   },
   methods: {
     // 刷新
@@ -82,45 +112,41 @@ export default {
     },
     async getMoreJobData() {
       console.log("加载更多");
-      let startIndex,endIndex;
+      let startIndex, endIndex;
 
       // 判断是否还有数据
-      if((this.jobListId.length - this.jobData.length) < this.everyGetLimit){
+      if (this.jobListId.length - this.jobData.length < this.everyGetLimit) {
         startIndex = this.getMoreTimes * this.everyGetLimit;
         endIndex = this.jobListId.length;
         this.finished = true;
-      }else{
+      } else {
         startIndex = this.getMoreTimes * this.everyGetLimit;
         endIndex = (this.getMoreTimes + 1) * this.everyGetLimit;
         this.getMoreTimes++;
       }
-      
-      const jobDataIds = this.jobListId.slice(startIndex,endIndex);
-      console.log(startIndex,endIndex,jobDataIds);
+
+      const jobDataIds = this.jobListId.slice(startIndex, endIndex);
+      console.log(startIndex, endIndex, jobDataIds);
       const { data } = await this.$http.getMoreJobData({ jobDataIds });
-      this.jobData = [...this.jobData,...data]
+      this.jobData = [...this.jobData, ...data];
       this.loading = false;
     },
   },
   async created() {
     this.getJobData();
   },
-  computed: {
-    ...mapGetters(["getTotalCity"]),
-  },
 };
 </script>
 
-<style lang='less' scoped>
-.container{
+<style lang="less" scoped>
+.container {
   height: 100%;
   .overview {
-  height: 100%;
-  overflow: hidden;
-  .jobItem-list {
-    touch-action: none;
+    height: 100%;
+    overflow: hidden;
+    .jobItem-list {
+      touch-action: none;
+    }
   }
 }
-}
-
 </style>

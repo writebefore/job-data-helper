@@ -1,0 +1,30 @@
+[2020-10-23T13:05:53.662] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%8C%97%E4%BA%AC&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"北京","searchKey":"前端"}
+response time: 0ms
+
+[2020-10-23T13:06:28.444] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getJobDataGroupBy
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"searchKey":"前端","groupBy":"createDate","city":"北京"}
+response time: 0ms
+
+[2020-10-23T13:07:49.039] [INFO] http - 
+request method: POST
+request originalUrl:  /job/getJobDataGroupBy
+request client ip:  ::ffff:127.0.0.1
+request body: 
+{"searchKey":"前端","groupBy":"createDate","city":"北京"}
+response time: 0ms
+
+[2020-10-23T13:07:59.306] [INFO] http - 
+request method: GET
+request originalUrl:  /job/getJobData?city=%E5%8C%97%E4%BA%AC&searchKey=%E5%89%8D%E7%AB%AF
+request client ip:  ::ffff:127.0.0.1
+request query:  {"city":"北京","searchKey":"前端"}
+response time: 0ms
+

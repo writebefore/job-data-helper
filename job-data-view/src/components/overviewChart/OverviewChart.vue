@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-20 20:16:58
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-22 23:20:23
+ * @LastEditTime: 2020-10-23 14:26:31
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\components\overviewChart\OverviewChart.vue
 -->
@@ -10,25 +10,19 @@
   <div class="overviewChart">
     <div class="chartContainer_top">
       <div class="dataSum">
+        <div class="title">总数据数量</div>
         <div class="number">{{ dataSum }}</div>
       </div>
-      <div id="myChart" style="width: 100%; height: 18rem"></div>
+      <div id="myChart" style="width: 100%; height: 30rem"></div>
     </div>
     <div class="chartContainer_bottom">
-      <div class="salaryCircle">
-        <van-circle v-model="currentRate" size="6rem" :rate="30" :speed="100" text="最高薪资" />
-        <van-circle v-model="currentRate" size="6rem" :rate="30" :speed="100" text="平均薪资" />
-        <van-circle v-model="currentRate" size="6rem" :rate="30" :speed="100" text="最低薪资" />
-      </div>
+      
     </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Circle } from "vant";
 
-Vue.use(Circle);
 export default {
   name: "overview-chart",
   props: {
@@ -49,9 +43,9 @@ export default {
       let myChart = this.$echarts.init(document.getElementById("myChart"));
       // 绘制图表
       myChart.setOption({
-        title: {
-          text:"数据视图",
-        },
+        // title: {
+        //   text:"数据视图",
+        // },
         tooltip: {
           trigger: "axis",
         },
