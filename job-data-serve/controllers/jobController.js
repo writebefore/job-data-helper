@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 15:06:37
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-21 19:36:17
+ * @LastEditTime: 2020-10-24 16:36:30
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\jobController.js
  */
@@ -10,6 +10,7 @@ const Response = require("../entity/index");
 const Services = require("../services/index");
 const config = require("../config");
 const Knuth = require("../utils/Knuth");
+const Spider = require("../spider/index");
 const getJobData = async function (ctx, next) {
   try {
     const { city, searchKey } = ctx.request.query;
@@ -51,10 +52,22 @@ const getJobDataGroupBy = async function (ctx, next) {
     ctx.body = new Response(1, "获取数据分组成功", res);
   } catch (err) {
     ctx.body = new Response(0, "获取数据分组失败", err);
-  }  
+  }
+};
+
+const getJobDetail = async function (ctx, next) {
+  const { userId, positionId } = ctx.request.body;
+  ctx.status = 200;
+  try {
+    const jobDetail = await Spider.getJobDetail(positionId);
+    ctx.body = new Response(1, "获取职位详细信息成功", {jobDetail})
+  } catch (err) {
+    ctx.body = new Response(0, "获取职位详细信息失败", err);
+  }
 };
 module.exports = {
   getJobData,
   getMoreJobData,
   getJobDataGroupBy,
+  getJobDetail,
 };

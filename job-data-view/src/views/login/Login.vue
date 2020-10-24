@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:47:19
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-23 19:06:52
+ * @LastEditTime: 2020-10-23 21:10:29
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\login\Login.vue
 -->
@@ -60,6 +60,7 @@
 
 <script>
 import Vue from "vue";
+import {mapActions} from "vuex";
 import { Button, Field, Toast, Form } from "vant";
 
 Vue.use(Button);
@@ -82,6 +83,7 @@ export default {
   },
   methods: {
     // 切换正常还是登陆
+    ...mapActions(["loadUserInfo"]),
     changeStatus() {
       this.clearInput();
       this.isLogin = !this.isLogin;
@@ -95,6 +97,7 @@ export default {
       console.log("登录");
       try {
         const { data } = await this.$http.userLogin(this.user);
+        this.loadUserInfo(data);
         sessionStorage.setItem("authorization", data.token);
         console.log(data);
         this.$router.push({

@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:17:40
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-20 18:58:22
+ * @LastEditTime: 2020-10-24 17:19:36
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\router\index.js
  */
@@ -48,7 +48,12 @@ const routes = [
   {
     name:'cityList',
     path:'/cityList',
-    component:() => import(/* webpackChunkName: 'HomePackage' */ '@/views/cityList/CityList.vue')
+    component:() => import(/* webpackChunkName: 'CityList' */ '@/views/cityList/CityList.vue')
+  },
+  {
+    name:'jobDetail',
+    path:'/jobDetail',
+    component:() =>import(/* webpackChunkName: 'JobDetail' */ '@/views/jobDetail/JobDetail.vue')
   }
 ]
 

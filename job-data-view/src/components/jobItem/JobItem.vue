@@ -2,12 +2,12 @@
  * @Author: LHN
  * @Date: 2020-10-18 16:54:01
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-22 23:16:01
+ * @LastEditTime: 2020-10-24 18:09:32
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\components\jobItem\JobItem.vue
 -->
 <template>
-  <div :class="['jobItem',isTouch ? 'touch' : '']" @touchstart="touchStart" @touchend="touchEnd">
+  <div :class="['jobItem', isTouch ? 'touch' : '']" @touchstart="touchStart" @touchend="touchEnd" @click="toJobDetail">
     <div class="wrap">
       <div class="company_img">
         <van-image width="4rem" height="4rem" :src="`https://www.lagou.com/${jobData.companyLogo}`" />
@@ -50,16 +50,22 @@ export default {
   },
   data() {
     return {
-      isTouch:false
-    }
+      isTouch: false,
+    };
   },
   methods: {
-    touchStart(){
+    touchStart() {
       this.isTouch = true;
     },
-    touchEnd(){
-      this.isTouch = false
-    }
+    touchEnd() {
+      this.isTouch = false;
+    },
+    toJobDetail() {
+      this.$router.push({
+        path: "/jobDetail",
+        query: { jobData: JSON.stringify({ ...this.jobData })},
+      });
+    },
   },
 };
 </script>
