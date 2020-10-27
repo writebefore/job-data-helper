@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 16:54:01
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-24 18:09:32
+ * @LastEditTime: 2020-10-26 19:51:05
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\components\jobItem\JobItem.vue
 -->
@@ -63,7 +63,7 @@ export default {
     toJobDetail() {
       this.$router.push({
         path: "/jobDetail",
-        query: { jobData: JSON.stringify({ ...this.jobData })},
+        query: { positionId: this.jobData.positionId},
       });
     },
   },

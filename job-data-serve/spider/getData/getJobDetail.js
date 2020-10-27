@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-23 21:19:39
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-24 18:15:37
+ * @LastEditTime: 2020-10-26 21:04:33
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getJobDetail.js
  */
@@ -10,7 +10,7 @@ const https = require("https");
 const hostname = "www.lagou.com";
 const getJobDetailRegexp = /<div class="job-detail">([\s\S]+?)<\/div>/;
 const getJobDetail = (positionId) => {
-  console.log(positionId);
+  console.log('positionId',positionId);
   return new Promise((resolve, reject) => {
     const option = {
       hostname,
@@ -32,7 +32,10 @@ const getJobDetail = (positionId) => {
 
         res.on("end",() =>{
             let jobDetail = getJobDetailRegexp.exec(html);
-            if(jobDetail == null) reject("null");
+            if(jobDetail == null) {
+              reject(null);
+              return;
+            };
             resolve(jobDetail[1])
         });
     }).on("error", (e) => {

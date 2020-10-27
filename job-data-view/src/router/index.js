@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-07 15:17:40
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-24 17:19:36
+ * @LastEditTime: 2020-10-26 21:01:24
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\router\index.js
  */
@@ -31,7 +31,7 @@ const routes = [
       {
         name:'overview',
         path:'overview',
-        component:() => import(/* webpackChunkName: 'Overview' */ '@/views/overview/Overview.vue')
+        component:() => import(/* webpackChunkName: 'Overview' */ '@/views/overview/Overview.vue'),
       },
       {
         name:"chart",
