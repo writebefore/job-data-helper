@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-17 17:10:48
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-27 21:19:21
+ * @LastEditTime: 2020-10-27 21:42:52
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\views\overview\Overview.vue
 -->
@@ -12,7 +12,7 @@
       <div class="jobItem-list">
         <van-pull-refresh v-model="isRefresh" @refresh="onRefresh">
           <van-list v-model="isLoading" :finished="getIsFinished" finished-text="没有更多了" offset="300" @load="getMoreJobData" ref="vanList" :immediate-check="false">
-            <job-item v-for="(item, index) in getJobData" :key="index" :jobData="item"></job-item>
+            <job-item v-for="(item, index) in getJobData" :key="index" :jobData="item" @clickJobItem="toJobDetail"></job-item>
           </van-list>
         </van-pull-refresh>
       </div>
@@ -53,9 +53,16 @@ export default {
     onRefresh() {
       this.refreshJobData({ city: this.getTotalCity, searchKey: "前端" });
     },
+    toJobDetail(jobData) {
+      this.$store.commit("setChosenJobData",jobData);
+      this.$router.push({
+        path: "/jobDetail",
+        query: { positionId: jobData.positionId },
+      });
+    },
   },
   computed: {
-    ...mapGetters(["getTotalCity", "getJobListId", "getJobData", "getIsFinished"]),
+    ...mapGetters(["getTotalCity", "getJobData", "getIsFinished"]),
     isRefresh: {
       get() {
         return this.$store.state.jobs.isRefresh;

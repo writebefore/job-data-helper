@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-26 22:48:45
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-27 21:18:54
+ * @LastEditTime: 2020-10-28 21:43:17
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-view\src\store\modules\jobs.js
  */
@@ -58,22 +58,20 @@ const actions = {
   async refreshJobData({ commit, state }, {city,searchKey}) {
     commit("setIsFinished", false);
     commit("setIsRefresh", true);
-    if (state.jobListId.length || state.jobData.length) {
-      commit("setJobData", []);
-      commit("setJobListId", []);
-    }
     const { data } = await Services.getJobData({city,searchKey});
     if (!data.jobData.length || !data.jobListId.length) {
       commit("setIsFinished", true);
     }
-    console.log(data);
+    if (state.jobListId.length || state.jobData.length) {
+      commit("setJobData", []);
+      commit("setJobListId", []);
+    }
     commit("setJobListId", [...data.jobListId]);
     commit("setJobData", [...data.jobData]);
     commit("setEveryGetLimit", data.everyGetLimit);
     commit("setGetMoreTimes", 1);
     commit("setIsRefresh", false);
     commit("setIsLoading",false)
-    console.log(state);
   },
 
   async getMoreJobData({ commit, state }) {
