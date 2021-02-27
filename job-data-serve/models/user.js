@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-04 15:59:49
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-04 18:23:43
+ * @LastEditTime: 2020-10-29 21:00:40
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\models\user.js
  */
@@ -21,7 +21,7 @@ const UserSchema = new Schema(
       default: '',
     },
     createTime:{
-      type:String,
+      type:Number,
       default:Date.now(),
     }
   },

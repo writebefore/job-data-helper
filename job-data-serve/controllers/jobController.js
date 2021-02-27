@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 15:06:37
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-24 16:36:30
+ * @LastEditTime: 2021-02-21 22:55:32
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\controllers\jobController.js
  */
@@ -40,8 +40,13 @@ const getJobData = async function (ctx, next) {
 const getMoreJobData = async function (ctx, next) {
   const { jobDataIds } = ctx.request.body;
   ctx.status = 200;
-  const res = await Services.getMoreJobDataService([...jobDataIds]);
-  ctx.body = new Response(1, "加载更多数据成功", res);
+  try {
+    const res = await Services.getMoreJobDataService([...jobDataIds]);
+    ctx.body = new Response(1, "加载更多数据成功", res);
+  } catch (err) {
+    ctx.body = new Response(0, "加载更多数据失败", err);
+  }
+  
 };
 
 const getJobDataGroupBy = async function (ctx, next) {

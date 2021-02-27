@@ -2,7 +2,7 @@
  * @Author: LHN
  * @Date: 2020-10-18 14:05:28
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-18 14:50:43
+ * @LastEditTime: 2020-10-29 20:44:27
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\services\servicesApi\addJobTypeService.js
  */
@@ -11,7 +11,6 @@ const moment = require("moment");
 const Response = require("../../entity/index");
 const findOneJobTypeService = require("./findOneJobTypeService");
 const addJobTypeService = async function (jobKey) {
-  console.log(1111);
   const findJobType = await findOneJobTypeService(jobKey);
   if (findJobType) return new Response(0, "职位类型已存在", findJobType);
   const newJobType = await JobType.create({
