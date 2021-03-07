@@ -2,15 +2,18 @@
  * @Author: LHN
  * @Date: 2020-10-23 21:19:39
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-26 21:04:33
+ * @LastEditTime: 2021-03-07 18:10:41
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getJobDetail.js
  */
 const https = require("https");
-const hostname = "www.lagou.com";
-const getJobDetailRegexp = /<div class="job-detail">([\s\S]+?)<\/div>/;
+const UserAgent = require("user-agents");
+const hostname = "m.lagou.com";
+const userAgent = new UserAgent({ deviceCategory: 'mobile' });
+const getJobDetailRegexp = /<div class="content">([\s\S]+?)<\/div>/;
 const getJobDetail = (positionId) => {
   console.log('positionId',positionId);
+  console.log('ua', userAgent.toString());
   return new Promise((resolve, reject) => {
     const option = {
       hostname,
@@ -18,9 +21,11 @@ const getJobDetail = (positionId) => {
       headers: {
         Connection: "keep-alive",
         "Cache-Control": "max-age=0",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,",
+        "User-Agent": userAgent.toString(),
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
         "Accept-Language": "zh-CN,zh;q=0.9",
+        referer: `https://${hostname}/jobs/${positionId}.html`,
+        "cache-control": "max-age=0"
       },
     };
 
@@ -32,6 +37,7 @@ const getJobDetail = (positionId) => {
 
         res.on("end",() =>{
             let jobDetail = getJobDetailRegexp.exec(html);
+            console.log('statusCode:' + res.statusCode);
             if(jobDetail == null) {
               reject(null);
               return;
@@ -44,5 +50,4 @@ const getJobDetail = (positionId) => {
     })
   });
 };
-getJobDetail("7491450");
 module.exports = getJobDetail

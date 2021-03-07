@@ -20,6 +20,7 @@
     "log4js": "^6.3.0",
     "moment": "^2.29.1",
     "mongoose": "^5.10.7",
+    "user-agents": "^1.0.582",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

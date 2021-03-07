@@ -2,12 +2,15 @@
  * @Author: LHN
  * @Date: 2020-10-14 18:51:20
  * @LastEditors: LHN
- * @LastEditTime: 2020-10-19 14:40:17
+ * @LastEditTime: 2021-03-07 18:06:58
  * @description: In User Settings Edit
  * @FilePath: \job-data-helper\job-data-serve\spider\getData\getJobData.js
  */
 const https = require("https");
 const qs = require("qs");
+const UserAgent = require("user-agents");
+const userAgent = new UserAgent();
+
 const Services = require("../../services/index");
 const getPageNumRegexp = /totalNum">(?<pageNum>[0-9]+)<\/span>/;
 let Cookie = "";
@@ -15,21 +18,30 @@ let allPageNum = 0;
 
 const delay = 5000; // 每个页面的爬取间隔
 // 获取查询的页面数量
-const getPageNum = function (jobName, city, pageNum) {
+const getPageNum = function (jobName, city, pageNum, redirectURL = '') {
   let first_request_url = encodeURI(
     `https://www.lagou.com/jobs/list_${jobName}?city=${city}&cl=false&fromSearch=true&labelWords=&suginput=`
   );
-  console.log("请求url为: " + first_request_url);
+  const option = {
+    hostname: 'www.lagou.com',
+    path: encodeURI(`/jobs/list_${jobName}?city=${city}&cl=false&fromSearch=true&labelWords=&suginput=`),
+    "user-agent": userAgent.toString()
+  }
+  console.log("请求url为: " + option.hostname + option.path);
   return new Promise((resolve, reject) => {
     https
-      .get(first_request_url, (res) => {
+      .get(redirectURL || first_request_url, (res) => {
+        console.log(res.headers);
         console.log("Cookie: " + res.headers["set-cookie"]);
+        console.log("Location: " + res.headers["location"]);
         Cookie = res.headers["set-cookie"];
         let html = "";
         res.on("data", (d) => {
           html += d;
         });
         res.on("end", () => {
+          console.log('statusCode:' + res.statusCode);
+          console.log(html);
           allPageNum = getPageNumRegexp.exec(html);
           if (!allPageNum) {
             reject(pageNum);
